@@ -1,10 +1,12 @@
 package com.ingressaca.bookstoretask.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+
 public class BookDTO {
 
     private Long id;
@@ -18,5 +20,11 @@ public class BookDTO {
     private AuthorDTO author;
 
     private AppUserDTO publisher;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Long authorId;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Long publisherId;
 
 }

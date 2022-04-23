@@ -1,6 +1,9 @@
 package com.ingressaca.bookstoretask;
 
-import com.ingressaca.bookstoretask.entity.Book;
+import com.ingressaca.bookstoretask.entity.AppUser;
+import com.ingressaca.bookstoretask.entity.Author;
+import com.ingressaca.bookstoretask.repository.AppUserRepository;
+import com.ingressaca.bookstoretask.repository.AuthorRepository;
 import com.ingressaca.bookstoretask.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,6 +16,12 @@ public class BookstoretaskApplication implements CommandLineRunner {
     @Autowired
     private BookRepository bookRepository;
 
+    @Autowired
+    private AuthorRepository authorRepository;
+
+    @Autowired
+    private AppUserRepository appUserRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(BookstoretaskApplication.class, args);
     }
@@ -20,10 +29,13 @@ public class BookstoretaskApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Book book = new Book();
-        book.setId(1l);
+        Author author = new Author();
+        author.setFullName("ramil");
+        authorRepository.save(author);
 
-        bookRepository.save(book);
+        AppUser appUser = new AppUser();
+        appUser.setName("appuser");
+        appUserRepository.save(appUser);
 
     }
 }
