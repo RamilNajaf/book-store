@@ -18,12 +18,11 @@ public class AppUser {
 
     private String name;
 
-
     @ManyToMany
     @JoinTable(
             name = "role_user",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    Set<Role> likedCourses;
+    Set<Role> roles;
 
 }

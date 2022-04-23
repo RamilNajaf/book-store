@@ -45,8 +45,15 @@
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
-            <version>1.5.0.RC1</version>
+            <version>1.4.2.Final</version>
         </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>1.4.2.Final</version>
+            <scope>provided</scope>
+        </dependency>
+
 
 
 
@@ -67,7 +74,9 @@
                 </configuration>
             </plugin>
 
+
         </plugins>
+
     </build>
 
 </project>
