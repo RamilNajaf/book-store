@@ -1,46 +1,44 @@
 package com.ingressaca.bookstoretask.controller;
 
 
+import com.ingressaca.bookstoretask.dto.AppUserDTO;
+import com.ingressaca.bookstoretask.dto.AuthorDTO;
 import com.ingressaca.bookstoretask.dto.BookDTO;
-import com.ingressaca.bookstoretask.dto.mapper.BookMapper;
-import com.ingressaca.bookstoretask.entity.AppUser;
-import com.ingressaca.bookstoretask.entity.Author;
-import com.ingressaca.bookstoretask.entity.Book;
-import com.ingressaca.bookstoretask.entity.Role;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Set;
+import com.ingressaca.bookstoretask.service.AppUserService;
+import com.ingressaca.bookstoretask.service.AuthorService;
+import com.ingressaca.bookstoretask.service.BookService;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
+@AllArgsConstructor
 public class TestController {
 
-    @Autowired
-    BookMapper bookMapper;
+
+    private final BookService bookService;
+    private final AuthorService authorService;
+    private final AppUserService appUserService;
 
 
-    @GetMapping("/books")
-    public BookDTO getUser(){
+    @PostMapping("/author")
+    public AuthorDTO addBook(@RequestBody AuthorDTO authorDTO) {
+        return authorService.save(authorDTO);
+    }
 
-        Book book = new Book();
+    @PostMapping("/appUser")
+    public AppUserDTO addBook(@RequestBody AppUserDTO appUserDTO) {
+        return appUserService.save(appUserDTO);
+    }
 
-        Author author = new Author();
-        author.setFullName("author 1 2");
-        AppUser appUser = new AppUser();
+    @PostMapping("/book")
+    public BookDTO addBook(@RequestBody BookDTO bookDTO) {
+        return bookService.save(bookDTO);
+    }
 
-        appUser.setName("ramil");
-        Role role = new Role();
-        role.setName("publisher ");
 
-        appUser.setRoles(Set.of(role));
-
-        book.setAuthor(author);
-        book.setPublisher(appUser);
-        book.setPrice("111");
-        return bookMapper.toDto(book);
-
+    @PutMapping("/book/{id}")
+    public BookDTO updateBook(@PathVariable Long id,@RequestBody BookDTO bookDTO) {
+        return bookService.update(id , bookDTO).orElseThrow();
     }
 }
