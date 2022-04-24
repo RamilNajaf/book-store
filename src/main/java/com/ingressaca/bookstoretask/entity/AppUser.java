@@ -1,5 +1,6 @@
 package com.ingressaca.bookstoretask.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,12 +11,15 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class AppUser extends BaseEntity{
 
-    private String name;
+    private String username;
 
-    @ManyToMany
+    private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "role_user",
             joinColumns = @JoinColumn(name = "user_id"),

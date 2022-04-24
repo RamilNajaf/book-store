@@ -9,7 +9,7 @@ import java.util.Set;
 @Setter
 public class AppUserDTO  extends BaseDTO {
 
-    private String name;
+    private String username;
 
     private Set<RoleDTO> roles;
 }
