@@ -4,6 +4,7 @@ import com.ingressaca.bookstoretask.entity.AppUser;
 import com.ingressaca.bookstoretask.entity.Role;
 import com.ingressaca.bookstoretask.repository.AppUserRepository;
 import com.ingressaca.bookstoretask.security.model.SecurityUser;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -26,7 +27,7 @@ public class SecurityUserService
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        AppUser user = appUserRepository.findByUsername(username).orElseThrow();
+        AppUser user = appUserRepository.findByUsername(username).orElseThrow( () -> new BadCredentialsException(null));//not throw NoSuchElement
         return buildSecurityUser(user);
     }
 

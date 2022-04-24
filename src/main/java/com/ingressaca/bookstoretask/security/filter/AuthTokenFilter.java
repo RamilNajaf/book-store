@@ -53,7 +53,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
                 username = tokenService.getUsernameFromToken(token);
                 //try catch block is a must here
             } catch (Exception e) {
-
+                //TODO log here
             }
         }
 

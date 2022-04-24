@@ -65,7 +65,7 @@ public class AuthService {
         String password = encoder.encode(request.getPassword());
         Set<Role> roles = new HashSet<>(roleRepository.findAll());
 
-        AppUser appUser = new AppUser(request.getUsername(), password, roles);
+        AppUser appUser = new AppUser(request.getEmail(),request.getUsername(), password, roles);
         userRepository.save(appUser);
         return appUserMapper.toDto(appUser);
     }

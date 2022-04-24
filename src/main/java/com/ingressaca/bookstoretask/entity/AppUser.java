@@ -15,6 +15,8 @@ import java.util.Set;
 @NoArgsConstructor
 public class AppUser extends BaseEntity{
 
+    private String email;
+
     private String username;
 
     private String password;
