@@ -30,13 +30,10 @@ public abstract class BookMapper {
     @Mapping(target = "publisher",expression = "java(findAppUser(dto.getPublisherId()))" )
     public abstract Book toEntity(BookDTO dto);
 
-
-
     @Mapping(target = "author",expression= "java(findAuthor(dto.getAuthorId()))")
     @Mapping(target = "publisher",expression = "java(findAppUser(dto.getPublisherId()))")
     @BeanMapping(nullValueCheckStrategy = ALWAYS,nullValuePropertyMappingStrategy = IGNORE)
     public abstract void updateModel(BookDTO dto, @MappingTarget Book book);
-
 
     protected AppUser findAppUser(Long id){
         if(id == null)

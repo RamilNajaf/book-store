@@ -6,10 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
-public class BookDTO {
-
-    private Long id;
+public class BookDTO   extends BaseDTO{
 
     private String name;
 

@@ -7,9 +7,7 @@ import java.util.Set;
 
 @Getter
 @Setter
-public class AppUserDTO {
-
-    private Long id;
+public class AppUserDTO  extends BaseDTO {
 
     private String name;
 

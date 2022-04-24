@@ -5,9 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AuthorDTO extends BaseDTO {
-
-    private String fullName;
-
-    private String birthDay;
+public abstract class BaseDTO {
+    protected Long id;
 }

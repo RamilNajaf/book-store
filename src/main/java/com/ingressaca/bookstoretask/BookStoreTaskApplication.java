@@ -11,7 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BookstoretaskApplication implements CommandLineRunner {
+public class BookStoreTaskApplication implements CommandLineRunner {
 
     @Autowired
     private BookRepository bookRepository;
@@ -23,7 +23,7 @@ public class BookstoretaskApplication implements CommandLineRunner {
     private AppUserRepository appUserRepository;
 
     public static void main(String[] args) {
-        SpringApplication.run(BookstoretaskApplication.class, args);
+        SpringApplication.run(BookStoreTaskApplication.class, args);
     }
 
     @Override

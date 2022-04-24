@@ -19,5 +19,4 @@ public interface AuthorMapper  {
     @BeanMapping(nullValueCheckStrategy = ALWAYS,nullValuePropertyMappingStrategy = IGNORE)
     public abstract void updateModel(AuthorDTO dto, @MappingTarget Author author);
 
-
 }

@@ -8,11 +8,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class Book {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Book extends BaseEntity{
 
     private String name;
 

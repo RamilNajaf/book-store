@@ -15,8 +15,6 @@ public interface RoleMapper {
 
     Role toEntity(RoleDTO dto);
 
-
-
     @BeanMapping(nullValueCheckStrategy = ALWAYS,nullValuePropertyMappingStrategy = IGNORE)
     public abstract void updateModel(RoleDTO dto, @MappingTarget Role role);
 }
