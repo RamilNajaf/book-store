@@ -1,8 +1,8 @@
 package com.ingressaca.bookstoretask.service;
 
 import com.ingressaca.bookstoretask.dto.AppUserDTO;
-import com.ingressaca.bookstoretask.dto.mapper.AppUserMapper;
 import com.ingressaca.bookstoretask.entity.AppUser;
+import com.ingressaca.bookstoretask.mapper.AppUserMapper;
 import com.ingressaca.bookstoretask.repository.AppUserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

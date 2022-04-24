@@ -1,4 +1,4 @@
-package com.ingressaca.bookstoretask.dto.mapper;
+package com.ingressaca.bookstoretask.mapper;
 
 import com.ingressaca.bookstoretask.dto.AppUserDTO;
 import com.ingressaca.bookstoretask.entity.AppUser;

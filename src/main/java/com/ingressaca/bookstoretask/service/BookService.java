@@ -2,8 +2,8 @@ package com.ingressaca.bookstoretask.service;
 
 
 import com.ingressaca.bookstoretask.dto.BookDTO;
-import com.ingressaca.bookstoretask.dto.mapper.BookMapper;
 import com.ingressaca.bookstoretask.entity.Book;
+import com.ingressaca.bookstoretask.mapper.BookMapper;
 import com.ingressaca.bookstoretask.repository.BookRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

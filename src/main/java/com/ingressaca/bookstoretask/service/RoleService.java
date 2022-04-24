@@ -1,8 +1,8 @@
 package com.ingressaca.bookstoretask.service;
 
 import com.ingressaca.bookstoretask.dto.RoleDTO;
-import com.ingressaca.bookstoretask.dto.mapper.RoleMapper;
 import com.ingressaca.bookstoretask.entity.Role;
+import com.ingressaca.bookstoretask.mapper.RoleMapper;
 import com.ingressaca.bookstoretask.repository.RoleRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

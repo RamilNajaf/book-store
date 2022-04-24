@@ -1,4 +1,4 @@
-package com.ingressaca.bookstoretask.dto.mapper;
+package com.ingressaca.bookstoretask.mapper;
 
 import com.ingressaca.bookstoretask.dto.BookDTO;
 import com.ingressaca.bookstoretask.entity.AppUser;
@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import static org.mapstruct.NullValueCheckStrategy.ALWAYS;
 import static org.mapstruct.NullValuePropertyMappingStrategy.IGNORE;
 
-@Mapper(componentModel = "spring",uses ={AuthorMapper.class,AppUserMapper.class})
+@Mapper(componentModel = "spring",uses ={AuthorMapper.class, AppUserMapper.class})
 public abstract class BookMapper {
 
     @Autowired
