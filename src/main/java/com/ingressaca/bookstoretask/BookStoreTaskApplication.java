@@ -2,10 +2,8 @@ package com.ingressaca.bookstoretask;
 
 import com.ingressaca.bookstoretask.entity.AppUser;
 import com.ingressaca.bookstoretask.repository.AppUserRepository;
-import com.ingressaca.bookstoretask.repository.AuthorRepository;
-import com.ingressaca.bookstoretask.repository.BookRepository;
 import com.ingressaca.bookstoretask.security.model.Roles;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,18 +12,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.List;
 
 @SpringBootApplication
+@AllArgsConstructor
 public class BookStoreTaskApplication implements CommandLineRunner {
 
-    @Autowired
-    private BookRepository bookRepository;
-
-    @Autowired
-    private AuthorRepository authorRepository;
-
-    @Autowired
     private AppUserRepository appUserRepository;
 
-    @Autowired
     private PasswordEncoder passwordEncoder;
 
     public static void main(String[] args) {
@@ -34,6 +25,8 @@ public class BookStoreTaskApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
+        if(appUserRepository.findAll().size()==0){
 
         AppUser appUser = new AppUser(
                 "ramil@gmail.com",
@@ -48,7 +41,7 @@ public class BookStoreTaskApplication implements CommandLineRunner {
 
         appUserRepository.saveAll(List.of(appUser, appUser2));
 
-    }
+    }}
 
 
 }

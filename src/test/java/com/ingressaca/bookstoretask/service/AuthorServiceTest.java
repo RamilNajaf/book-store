@@ -109,7 +109,7 @@ public class AuthorServiceTest {
 
         List<AuthorDTO> result = authorService.findAll();
         assertEquals(result, expected);
-         verify(authorRepository,  times(1)).findAll();
+        verify(authorRepository, times(1)).findAll();
         verifyNoMoreInteractions(authorRepository);
     }
 }

@@ -42,8 +42,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
         String username = null;
         String token = null;
-        Authentication auth
-                = SecurityContextHolder.getContext().getAuthentication();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
 
         if (authHeader != null && authHeader.contains(TOKEN_PREFIX)) {

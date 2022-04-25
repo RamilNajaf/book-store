@@ -12,7 +12,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.naming.AuthenticationException;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.Objects;
@@ -34,7 +33,7 @@ public class AuthService {
                        AuthenticationManager authenticationManager,
                        AppUserRepository userRepository,
                        BCryptPasswordEncoder encoder,
-                       AppUserMapper appUserMapper) throws AuthenticationException {
+                       AppUserMapper appUserMapper){
         this.tokenService = tokenService;
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
