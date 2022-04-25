@@ -9,13 +9,13 @@ import org.mapstruct.MappingTarget;
 import static org.mapstruct.NullValueCheckStrategy.ALWAYS;
 import static org.mapstruct.NullValuePropertyMappingStrategy.IGNORE;
 
-@Mapper(componentModel = "spring",uses = RoleMapper.class)
+@Mapper(componentModel = "spring")
 public interface AppUserMapper {
 
     AppUserDTO toDto(AppUser entity);
 
     AppUser toEntity(AppUserDTO dto);
 
-    @BeanMapping(nullValueCheckStrategy = ALWAYS,nullValuePropertyMappingStrategy = IGNORE)
+    @BeanMapping(nullValueCheckStrategy = ALWAYS, nullValuePropertyMappingStrategy = IGNORE)
     public abstract void updateModel(AppUserDTO dto, @MappingTarget AppUser appUser);
 }

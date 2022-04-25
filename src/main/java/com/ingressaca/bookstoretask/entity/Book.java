@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class Book extends BaseEntity{
+public class Book extends BaseEntity {
 
     private String name;
 

@@ -8,8 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
-public class BaseValidator
-{
+public class BaseValidator {
     @Autowired
     protected HttpServletRequest httpServletRequest;
 
@@ -19,8 +18,7 @@ public class BaseValidator
     public BaseValidator() {
     }
 
-    protected Long getIdFromUri()
-    {
+    protected Long getIdFromUri() {
         @SuppressWarnings("unchecked")
         Map<String, String> map = (Map<String, String>) httpServletRequest.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
         return map.get("id") == null ? 0 : Long.parseLong(map.get("id"));

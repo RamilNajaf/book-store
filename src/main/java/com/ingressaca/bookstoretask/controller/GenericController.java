@@ -6,7 +6,6 @@ import com.ingressaca.bookstoretask.service.GenericService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -39,8 +38,7 @@ public abstract class GenericController<T extends BaseDTO, E extends BaseEntity>
     public ResponseEntity<T> update(@PathVariable Long id, @RequestBody T baseDTO) {
         Optional<T> optional = genericService.update(id, baseDTO);
         return optional.map((response) ->
-                        ResponseEntity.ok().body(response))
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                        ResponseEntity.ok().body(response)).orElseThrow();
     }
 
     @PostMapping

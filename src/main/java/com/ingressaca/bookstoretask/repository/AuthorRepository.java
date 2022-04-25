@@ -1,4 +1,5 @@
 package com.ingressaca.bookstoretask.repository;
+
 import com.ingressaca.bookstoretask.entity.Author;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -15,20 +15,22 @@ import java.util.stream.Collectors;
 @Service
 @AllArgsConstructor
 public class AuthorService implements GenericService<AuthorDTO, Author> {
+
     private  final AuthorRepository authorRepository;
     private  final AuthorMapper authorMapper;
 
 
-    public AuthorDTO findById(Long authorId){
+    public AuthorDTO findById(Long authorId) {
         Author author = authorRepository.findById(authorId).orElseThrow();
         return authorMapper.toDto(author);
     }
 
-    public List<AuthorDTO> findAll(){
-        return authorRepository.findAll().stream().map(author -> authorMapper.toDto(author)).collect(Collectors.toList());
+    public List<AuthorDTO> findAll() {
+        return authorRepository.findAll().stream().map(authorMapper::toDto).collect(Collectors.toList());
     }
-    public AuthorDTO save(AuthorDTO authorDTO){
-        Author author  = authorMapper.toEntity(authorDTO);
+
+    public AuthorDTO save(AuthorDTO authorDTO) {
+        Author author = authorMapper.toEntity(authorDTO);
         return authorMapper.toDto(authorRepository.save(author));
     }
 
@@ -39,17 +41,17 @@ public class AuthorService implements GenericService<AuthorDTO, Author> {
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .map(
-                       author ->
+                        author ->
                         {
-                            authorMapper.updateModel(dto,author);
+                            authorMapper.updateModel(dto, author);
                             return authorRepository.save(author);
                         }
                 )
-                .map(author -> authorMapper.toDto(author));
+                .map(authorMapper::toDto);
     }
 
 
-    public void delete(Long authorId){
+    public void delete(Long authorId) {
         authorRepository.deleteById(authorId);
     }
 }

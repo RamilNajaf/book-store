@@ -1,10 +1,11 @@
 package com.ingressaca.bookstoretask.security.service;
 
 import com.ingressaca.bookstoretask.entity.AppUser;
-import com.ingressaca.bookstoretask.entity.Role;
 import com.ingressaca.bookstoretask.repository.AppUserRepository;
 import com.ingressaca.bookstoretask.security.model.SecurityUser;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -27,18 +28,23 @@ public class SecurityUserService
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        AppUser user = appUserRepository.findByUsername(username).orElseThrow( () -> new BadCredentialsException(null));//not throw NoSuchElement
+        AppUser user = appUserRepository.findByUsername(username).orElseThrow(() -> new BadCredentialsException(null));//not throw NoSuchElement
         return buildSecurityUser(user);
     }
 
     private SecurityUser buildSecurityUser(AppUser user) {
 
-        List<Role> userRoleList = new ArrayList(user.getRoles());
+        List<GrantedAuthority> authorityList = new ArrayList<>();
+
+        user.getRoleList().forEach(r -> {
+            GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + r);
+            authorityList.add(authority);
+        });
 
         return SecurityUser.builder()
                 .username(user.getUsername())
                 .password(user.getPassword())
-                .authorities(userRoleList)
+                .authorities(authorityList)
                 .accountNonExpired(true)
                 .accountNonLocked(true)
                 .credentialsNonExpired(true)

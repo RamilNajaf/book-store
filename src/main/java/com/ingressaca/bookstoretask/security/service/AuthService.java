@@ -2,10 +2,8 @@ package com.ingressaca.bookstoretask.security.service;
 
 import com.ingressaca.bookstoretask.dto.AppUserDTO;
 import com.ingressaca.bookstoretask.entity.AppUser;
-import com.ingressaca.bookstoretask.entity.Role;
 import com.ingressaca.bookstoretask.mapper.AppUserMapper;
 import com.ingressaca.bookstoretask.repository.AppUserRepository;
-import com.ingressaca.bookstoretask.repository.RoleRepository;
 import com.ingressaca.bookstoretask.security.model.dto.request.LoginRequest;
 import com.ingressaca.bookstoretask.security.model.dto.request.SignUpRequest;
 import com.ingressaca.bookstoretask.security.model.dto.response.TokenResponse;
@@ -15,9 +13,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.naming.AuthenticationException;
-import java.util.HashSet;
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.Objects;
-import java.util.Set;
 
 @Service
 public class AuthService {
@@ -30,20 +28,17 @@ public class AuthService {
 
     private final AppUserRepository userRepository;
 
-    private final RoleRepository roleRepository;
-
     private final AppUserMapper appUserMapper;
 
     public AuthService(TokenService tokenService,
                        AuthenticationManager authenticationManager,
                        AppUserRepository userRepository,
                        BCryptPasswordEncoder encoder,
-                       RoleRepository roleRepository, AppUserMapper appUserMapper) throws AuthenticationException {
+                       AppUserMapper appUserMapper) throws AuthenticationException {
         this.tokenService = tokenService;
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.encoder = encoder;
-        this.roleRepository = roleRepository;
         this.appUserMapper = appUserMapper;
     }
 
@@ -60,12 +55,17 @@ public class AuthService {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
     }
 
+    public AppUserDTO getAuthenticatedUser(HttpServletRequest request) {
+        Principal principal = request.getUserPrincipal();
+        AppUser appUser = userRepository.findByUsername(principal.getName()).orElseThrow();
+        AppUserDTO userDto = appUserMapper.toDto(appUser);
+        return userDto;
+    }
+
 
     public AppUserDTO signUp(SignUpRequest request) {
         String password = encoder.encode(request.getPassword());
-        Set<Role> roles = new HashSet<>(roleRepository.findAll());
-
-        AppUser appUser = new AppUser(request.getEmail(),request.getUsername(), password, roles);
+        AppUser appUser = new AppUser(request.getEmail(), request.getUsername(), password, "");
         userRepository.save(appUser);
         return appUserMapper.toDto(appUser);
     }

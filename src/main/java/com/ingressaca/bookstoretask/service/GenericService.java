@@ -3,8 +3,7 @@ package com.ingressaca.bookstoretask.service;
 import java.util.List;
 import java.util.Optional;
 
-public interface GenericService<T, E>
-{
+public interface GenericService<T, E> {
     T save(T dto);
 
     List<T> findAll();

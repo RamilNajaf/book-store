@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class BookDTO   extends BaseDTO{
+public class BookDTO extends BaseDTO {
 
     private String name;
 
@@ -20,8 +20,5 @@ public class BookDTO   extends BaseDTO{
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Long authorId;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Long publisherId;
 
 }

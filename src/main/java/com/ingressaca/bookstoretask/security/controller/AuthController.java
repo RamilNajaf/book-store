@@ -9,11 +9,9 @@ import com.ingressaca.bookstoretask.security.service.AuthService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @RequestMapping("/api")
@@ -32,5 +30,10 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<AppUserDTO> signUp(@Valid @RequestBody SignUpRequest request) {
         return new ResponseEntity<>(authService.signUp(request), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<AppUserDTO> addPublisherRole(HttpServletRequest request) {
+        return ResponseEntity.ok(authService.getAuthenticatedUser(request));
     }
 }

@@ -1,16 +1,15 @@
 package com.ingressaca.bookstoretask;
 
 import com.ingressaca.bookstoretask.entity.AppUser;
-import com.ingressaca.bookstoretask.entity.Author;
-import com.ingressaca.bookstoretask.entity.Role;
 import com.ingressaca.bookstoretask.repository.AppUserRepository;
 import com.ingressaca.bookstoretask.repository.AuthorRepository;
 import com.ingressaca.bookstoretask.repository.BookRepository;
-import com.ingressaca.bookstoretask.repository.RoleRepository;
+import com.ingressaca.bookstoretask.security.model.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 
@@ -24,10 +23,10 @@ public class BookStoreTaskApplication implements CommandLineRunner {
     private AuthorRepository authorRepository;
 
     @Autowired
-    private RoleRepository roleRepository;
+    private AppUserRepository appUserRepository;
 
     @Autowired
-    private AppUserRepository appUserRepository;
+    private PasswordEncoder passwordEncoder;
 
     public static void main(String[] args) {
         SpringApplication.run(BookStoreTaskApplication.class, args);
@@ -36,26 +35,20 @@ public class BookStoreTaskApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Role role1 = new Role("PUBLISHER");
-        Role role2 = new Role("USER");
-        roleRepository.saveAll(List.of(role1,role2));
+        AppUser appUser = new AppUser(
+                "ramil@gmail.com",
+                "ramil", passwordEncoder.encode("ramil"),
+                Roles.PUBLISHER);
+
+        AppUser appUser2 = new AppUser(
+                "hesen@gmail.com",
+                "hesen", passwordEncoder.encode("hesen"),
+                Roles.ADMIN);
 
 
-        Author author = new Author();
-        author.setFullName("ramil");
-        authorRepository.save(author);
-
-        AppUser appUser = new AppUser();
-        appUser.setUsername("appuser");
-        appUserRepository.save(appUser);
+        appUserRepository.saveAll(List.of(appUser, appUser2));
 
     }
-
-
-
-
-
-
 
 
 }

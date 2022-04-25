@@ -26,7 +26,7 @@ public class TokenService {
                 .setIssuer("bookStoreTask")
                 .setIssuedAt(creationDate)
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
-                .signWith(SignatureAlgorithm.HS256,secret)
+                .signWith(SignatureAlgorithm.HS256, secret)
                 .compact();
     }
 
