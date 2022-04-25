@@ -39,7 +39,6 @@ public class BookServiceTest {
         appUserRepository = mock(AppUserRepository.class);
         bookMapper = mock(BookMapper.class);
         bookService = new BookService(bookRepository, appUserRepository, bookMapper);
-
     }
 
     @Test
@@ -53,19 +52,16 @@ public class BookServiceTest {
         assertEquals(result, expected);
     }
 
-
     @Test
     public void testFindByIdWhenBookNotExist() {
         when(bookRepository.findById(anyLong())).thenReturn(Optional.empty());
         assertThrows(NoSuchElementException.class, () -> bookService.findById(anyLong()));
     }
 
-
     @Test
     public void testSave() {
         AppUser publisher = new AppUser();
         Author author = new Author();
-
 
         Book book = new Book("name", "intro", "price", author, publisher);
         BookDTO bookDTO = new BookDTO();
@@ -116,10 +112,7 @@ public class BookServiceTest {
         BookDTO updateBook = bookService.update(anyLong(), bookDTO).get();
 
         assertEquals(updateBook, bookDTO);
-
-
     }
-
 
     @Test
     public void testFindAll() {
@@ -176,7 +169,6 @@ public class BookServiceTest {
 
     }
 
-
     @Test
     public void testUpdateByPublisherId() {
 
@@ -225,8 +217,6 @@ public class BookServiceTest {
         assertThrows(ForbiddenException.class, () -> bookService.updateByPublisher(anyLong(), bookDTO));
         verify(bookMapper, times(0)).updateModel(any(), any());
         verify(bookMapper, times(0)).toDto(any());
-
-
     }
 
 }

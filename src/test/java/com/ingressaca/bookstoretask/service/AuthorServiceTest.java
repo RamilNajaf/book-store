@@ -29,7 +29,6 @@ public class AuthorServiceTest {
 
     @BeforeEach
     public void setUp() {
-
         authorRepository = mock(AuthorRepository.class);
         authorMapper = mock(AuthorMapper.class);
         authorService = new AuthorService(authorRepository, authorMapper);
@@ -71,8 +70,6 @@ public class AuthorServiceTest {
 
     @Test
     public void testDeleteWhenAuthorExist() {
-
-
         Author author = new Author("name", "birhDay");
 
         when(authorRepository.findById(anyLong())).thenReturn(Optional.of(author));
@@ -86,8 +83,6 @@ public class AuthorServiceTest {
 
     @Test
     public void testUpdate() {
-
-
         Author author = new Author("name", "birthDay");
         AuthorDTO authorDTO = new AuthorDTO();
 
