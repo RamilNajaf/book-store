@@ -9,6 +9,8 @@ import com.ingressaca.bookstoretask.mapper.BookMapper;
 import com.ingressaca.bookstoretask.repository.AppUserRepository;
 import com.ingressaca.bookstoretask.repository.BookRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -61,7 +63,7 @@ public class BookService implements GenericService<BookDTO, Book> {
 
 
     public void delete(Long bookId) {
-        bookRepository.deleteById(bookId);
+        bookRepository.findById(bookId).ifPresent(bookRepository::delete);
     }
 
 
@@ -74,6 +76,7 @@ public class BookService implements GenericService<BookDTO, Book> {
         AppUser appUser = appUserRepository.findByUsername(authentication.getName()).orElseThrow();
 
 
+        System.out.println(book.getPublisher());
         if (book.getPublisher().getId().equals(appUser.getId())) {
             bookRepository.deleteById(bookId);
         } else {
@@ -90,7 +93,6 @@ public class BookService implements GenericService<BookDTO, Book> {
 
         AppUser appUser = appUserRepository.findByUsername(authentication.getName()).orElseThrow();
 
-
         if (book.getPublisher().getId().equals(appUser.getId())) {
             bookMapper.updateModel(dto, book);
             return bookMapper.toDto(bookRepository.save(book));
@@ -99,12 +101,17 @@ public class BookService implements GenericService<BookDTO, Book> {
         }
     }
 
-    public List<BookDTO> findSpecificBookWithFilter(String name, String price, Long auhtorId,Long publisherId) {
+    public Page<BookDTO> findSpecificBookWithFilter(String name, String price, Long authorId, Long publisherId, int size, int page) {
 
-        List<BookDTO> bookDTOs = bookRepository.findSpecificBook( name, price, auhtorId, publisherId)
-                .stream().map(bookMapper::toDto).collect(Collectors.toList());
+        Page<BookDTO> bookDTOPage = bookRepository.findSpecificBook(
+                        name,
+                        price,
+                        authorId,
+                        publisherId,
+                        PageRequest.of(page,size))
+                .map(bookMapper::toDto);
 
-        return  bookDTOs;
+        return bookDTOPage;
     }
 
 

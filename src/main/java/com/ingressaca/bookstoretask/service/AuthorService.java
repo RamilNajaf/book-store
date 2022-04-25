@@ -52,6 +52,6 @@ public class AuthorService implements GenericService<AuthorDTO, Author> {
 
 
     public void delete(Long authorId) {
-        authorRepository.deleteById(authorId);
+       authorRepository.findById(authorId).ifPresent(authorRepository::delete);
     }
 }
