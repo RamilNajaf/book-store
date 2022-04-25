@@ -24,7 +24,6 @@ public class AdminServiceTest {
     private AppUserMapper appUserMapper;
     private AdminService adminService;
 
-
     @BeforeEach
     public void setUp() {
         appUserRepository = mock(AppUserRepository.class);

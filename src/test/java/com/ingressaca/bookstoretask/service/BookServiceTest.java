@@ -31,7 +31,6 @@ public class BookServiceTest {
     private AppUserRepository appUserRepository;
     private BookMapper bookMapper;
 
-
     @BeforeEach
     public void setUp() {
 

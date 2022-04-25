@@ -21,11 +21,9 @@ import static org.mockito.Mockito.*;
 
 public class AuthorServiceTest {
 
-
     private AuthorRepository authorRepository;
     private AuthorMapper authorMapper;
     private AuthorService authorService;
-
 
     @BeforeEach
     public void setUp() {
@@ -96,7 +94,6 @@ public class AuthorServiceTest {
         assertEquals(updateAuthor, authorDTO);
 
     }
-
 
     @Test
     public void testFindAll() {
