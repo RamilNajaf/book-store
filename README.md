@@ -8,7 +8,7 @@
            
 ## Readme ile davam edə bilmək  üçün postman collectionu postmana import edin : 
 
-   Postman Collections to import [click here](https://github.com/RamilNajaf/ingress-task/blob/Main/bookstore_main.postman_collection)
+   Postman Collections to import [click here](https://github.com/RamilNajaf/ingress-task/blob/Main/bookstore1.postman_collection)
 
 ## Istifadə olunan texnologiyalar:
            
