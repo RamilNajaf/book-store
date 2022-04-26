@@ -27,10 +27,14 @@
            - Rolu olmayan istifidəçi : sadəcə kitab (book entity ) və müəlliflərə (author entity) baxa bilər. Silə və ya editləyə bilməz.
              Qeydiyyatdan keçdikdə yaranan user rolu olmayan istifadəçidir
              
-           - Publisher :  müəllifləri (author) yarada, silə və editləyə bilər . Kitab yarada bilər,ancaq, yalnız və yalnız öz yaratdığı kitabı silə və ya editləyə bilər (Publisher id -si öz id -si olan kitabları)
+           - Publisher :  müəllifləri (author) yarada, silə və editləyə bilər .
+                          Kitab yarada bilər,ancaq, yalnız və yalnız öz yaratdığı kitabı silə və ya editləyə bilər
+                          (Publisher id -si öz id -si olan kitabları)
            
-           - Admin :  Uygun olmayan Kitabları silə və ya editləyə bilər .İstənilən istifadəçiyə publisher rolu verə bilər,hətta özünə belə . 
-                      Kitab və ya Müəlllifi yalnız özünü publisher etdikdən sonra yarada bilər. Default olaraq Publisher roluna malik deyik.
+           - Admin :  Uygun olmayan Kitabları silə və ya editləyə bilər. İstənilən istifadəçiyə publisher rolu verə bilər,hətta özünə belə . 
+                      Bütün istifadəçiləri görə bilər
+                      Kitab və ya Müəlllifi yalnız özünü publisher etdikdən sonra yarada bilər. 
+                      Default olaraq Publisherin edtiklərin edə bilmir.
        
       App run olunduqda command line runner ilə bir publisher və  bir admin insert olunur.
         - Publisher: username - "ramil" , password - "ramil"
