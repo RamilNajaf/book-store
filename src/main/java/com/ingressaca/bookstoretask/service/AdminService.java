@@ -22,7 +22,7 @@ public class AdminService {
         AppUser appUser = appUserRepository.findById(userId).orElseThrow();
 
         if (!appUser.getRoleList().contains(Roles.PUBLISHER)) {
-            appUser.setRoles(Roles.PUBLISHER);
+            appUser.setRoles(appUser.getRoles()+","+Roles.PUBLISHER);
             appUserRepository.save(appUser);
         }
     }

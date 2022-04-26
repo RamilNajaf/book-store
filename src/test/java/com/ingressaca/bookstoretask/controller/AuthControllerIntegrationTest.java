@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @AutoConfigureMockMvc
 @BaseIntegrationTest
-public class AuthControllerTest {
+public class AuthControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;

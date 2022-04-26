@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
-public class AuthorServiceTest {
+public class AuthorServiceUnitTest {
 
     private AuthorRepository authorRepository;
     private AuthorMapper authorMapper;
