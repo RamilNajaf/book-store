@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/books")
-
 public class BookController extends GenericController<BookDTO, Book> {
 
     private final BookService bookService;

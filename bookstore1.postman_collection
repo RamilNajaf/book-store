@@ -64,7 +64,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n{\r\n     \"username\":\"hesen\",\r\n    \"password\":\"hesen\"\r\n}",
+							"raw": "\r\n{\r\n     \"username\":\"ramil\",\r\n    \"password\":\"ramil\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -129,7 +129,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYW1pbCIsImlzcyI6ImJvb2tTdG9yZVRhc2siLCJpYXQiOjE2NTA5NTgzNTgsImV4cCI6MTY1MDk1OTI1OH0.KiN_e2OrcHAtltQsFiDh3hm2Zs_xuh_LvDeookz4AqI",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYW1pbCIsImlzcyI6ImJvb2tTdG9yZVRhc2siLCJpYXQiOjE2NTA5NzUxMTEsImV4cCI6MTY1MDk3NjAxMX0.f3wGLVQ4uzee3cRiNYrdLbCom2d1rK4WL9tYdVsvNFE",
 									"type": "string"
 								}
 							]
@@ -338,7 +338,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoZXNlbiIsImlzcyI6ImJvb2tTdG9yZVRhc2siLCJpYXQiOjE2NTA5NjE0MTAsImV4cCI6MTY1MDk2MjMxMH0.9VtVY07MjSRAHDmJ2MxYIID2Fy5nNZ4RQFKr8-eZi38",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYW1pbCIsImlzcyI6ImJvb2tTdG9yZVRhc2siLCJpYXQiOjE2NTA5NzUxMTEsImV4cCI6MTY1MDk3NjAxMX0.f3wGLVQ4uzee3cRiNYrdLbCom2d1rK4WL9tYdVsvNFE",
 									"type": "string"
 								}
 							]
@@ -552,6 +552,14 @@
 								"delete_by_publisher"
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "find spesific book",
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}
