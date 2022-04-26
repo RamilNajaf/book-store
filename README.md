@@ -40,6 +40,48 @@
         - Publisher: username - "ramil" , password - "ramil"
         - Admin:     username - "hesen" , password - "hesen"
 
-          
-      
-    
+## Endpointlərə detallı baxış:
+ task-ı rahat test edə bilmək üçün üçün yuxarıdakı postman collectionu postmana import edin və aşağıda göstərilən şəkildə yoxlayın
+         
+         1. Postmanda  auth folderi -  AuthContoller
+         
+                -- /api/signup (POST)  -> Qeydiyyatdan keçmək üçün.Username və Email unique olmalıdır.Yaranan istifadəçinin rolu olmur.
+                
+                -- /api/login  (POST)  -> Login olmaq üçün.
+                
+                -- /api/me     (GET)   -> Authenticated olmuş istifadəçiyə baxış üçün.Authentication teleb edir
+                
+         2. Postmanda admin folderi - AdminController
+                -- /api/admin/users  (GET)  ->  Bütün istifadəçilərin məlumatların görmək üçün. Ancaq Admin role -ilə access var
+                
+                -- /api/admin/{userİd}/add_publisher_role  (PUT) -> Istifadəçilərə pubisher rolu vermək üçündür.Ancaq Admin role -ilə access var.Admin özünü də publisher edə bilər.
+                
+         3.Postmanda author folderi - AuthorController
+            --    /api/authors (POST) -> müəllif paylaşmaq üçündür.Publisher Role - ilə access var
+            
+            --    /api/authors (GET) -> müəllifləri  görmək üçündür . Authentication teleb edir.
+            
+            --    /api/authors/{id} (GET) -> tək müəllifi görmək üçün . Authentication teleb edir
+            
+            --    /api/authors/{id} (DELETE) -> Silmək üçün. Publisher Role - ilə access var
+            
+            --    /api/authors/{id} (PUT) -> Update üçün. Publisher Role - ilə access var
+            
+         4.Postmanda book folderi - BookController
+         
+            --    /api/books (POST) -> kitab paylaşmaq üçündür. Publisher Role - ilə access var.
+            
+            --    /api/books (GET) -> kitabları  görmək üçündür . Authentication teleb edir.
+            
+            --    /api/books/{id} (GET) -> tək kitabI görmək üçün . Authentication teleb edir
+            
+            --    /api/books/find_specific_book (GET) -> kitabları  parametrlə axtarmaq və ya filter üçün.Pagination Support.Authenticatin tələb edir.
+            
+            --    /api/books/{id} (DELETE) -> Silmək üçün.Admin Role - ilə access var.Sadəcə admin istənilən kitabı silə bilər
+           
+            --    /api/books/{id} (PUT) -> Update üçün.Admin Role - ilə access var.Sadəcə admin istənilən kitabı update edə bilər
+            
+            --    /api/books/{id}/update_by_publisher (PUT) -> Publisherin öz paylaşdığı kitabı yeniləməsi üçün.Publisher role tələb edir.
+            
+            --    /api/books/{id}/delete_by_publisher (Delete) -> Publisherin öz paylaşdığı kitabı silməsi üçün.Publisher role tələb edir.
+            
