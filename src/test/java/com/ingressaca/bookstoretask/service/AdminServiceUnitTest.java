@@ -40,7 +40,7 @@ public class AdminServiceUnitTest {
         when(appUserRepository.findById(any())).thenReturn(Optional.of(appUser));
         adminService.addPublisherRoleToUser(any());
 
-        assertEquals(appUser.getRoleList(), List.of(Roles.PUBLISHER));
+        assertEquals(appUser.getRoleList().contains(Roles.PUBLISHER),true);
     }
 
     @Test
