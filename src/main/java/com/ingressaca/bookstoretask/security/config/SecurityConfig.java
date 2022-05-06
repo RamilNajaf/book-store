@@ -56,8 +56,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/api/authors", "/api/books").hasRole(Roles.PUBLISHER)
                 .antMatchers(HttpMethod.DELETE, "/api/authors/{id}").hasRole(Roles.PUBLISHER)
                 .antMatchers(HttpMethod.PUT, "/api/authors/{id}").hasRole(Roles.PUBLISHER)
-                .antMatchers(HttpMethod.PUT, "/api/books/{id}").hasAnyRole(Roles.ADMIN)
-                .antMatchers(HttpMethod.DELETE, "/api/books/{id}").hasAnyRole(Roles.ADMIN)
+                .antMatchers(HttpMethod.PUT, "/api/books/{id}").hasRole(Roles.ADMIN)
+                .antMatchers(HttpMethod.DELETE, "/api/books/{id}").hasRole(Roles.ADMIN)
                 .antMatchers(HttpMethod.PUT, "/api/admin/{id}/add_publisher_role").hasRole(Roles.ADMIN)
                 .antMatchers(HttpMethod.PUT, "/api/admin/users").hasRole(Roles.ADMIN)
 
