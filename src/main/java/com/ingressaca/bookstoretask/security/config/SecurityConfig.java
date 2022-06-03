@@ -50,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/api/signup").permitAll()
+                .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/api/login").permitAll()
                 .antMatchers(HttpMethod.PUT, "/api/books/{id}/update_by_publisher").hasRole(Roles.PUBLISHER)
                 .antMatchers(HttpMethod.DELETE, "/api/books/{id}/delete_by_publisher").hasRole(Roles.PUBLISHER)
@@ -68,5 +69,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling()
                 .authenticationEntryPoint(entryPointConfig);
+
+        http.headers().frameOptions().disable();
     }
+
+
 }
